@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pronko Consulting (https://www.pronkoconsulting.com)
+ * See LICENSE for the license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Pronko\Training\Model\PaymentGateway">
+        <arguments>
+            <argument name="currency" xsi:type="string">USD</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="VirtualTypePronkoPaymentGatewayEUR" type="Pronko\Training\Model\PaymentGateway">
+        <arguments>
+            <argument name="currency" xsi:type="string">EUR</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="PronkoPaymentGatewayBankEdition" type="Pronko\Training\Model\BankPaymentGateway">
+        <arguments>
+            <argument name="currency" xsi:type="string">GBP</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Pronko\Training\Model\PaymentRepository">
+        <arguments>
+            <argument name="paymentPool" xsi:type="array">
+                <item name="credit_card" xsi:type="object">Pronko\Training\Model\PaymentGateway</item>
+                <item name="bank" xsi:type="object">PronkoPaymentGatewayBankEdition</item>
+            </argument>
+        </arguments>
+    </type>
+
+
+
+
+    <type name="Pronko\Training\Model\UserFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">PronkoMax</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="PronkoMax" type="Pronko\Training\Model\User">
+        <arguments>
+            <argument name="name" xsi:type="string">Max Pronko</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="JohnDoe" type="Pronko\Training\Model\User">
+        <arguments>
+            <argument name="name" xsi:type="string">John Doe</argument>
+        </arguments>
+    </virtualType>
+</config>
