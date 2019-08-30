@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace Pronko\Training\Model;
 
-
 use Pronko\Training\Api\PaymentGatewayInterface;
 
 class PaymentRepository

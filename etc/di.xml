@@ -38,9 +38,9 @@
                 <item name="bank" xsi:type="object">PronkoPaymentGatewayJapaneseBank</item>
             </argument>
         </arguments>
+
+       <plugin name="PronkoTrainingAddNewPayment" type="Pronko\Training\Plugin\PaymentRepositoryPlugin" />
     </type>
-
-
 
 
     <type name="Pronko\Training\Model\UserFactory">
