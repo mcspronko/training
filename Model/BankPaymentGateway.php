@@ -12,11 +12,14 @@ use Pronko\Training\Api\PaymentGatewayInterface;
 
 class BankPaymentGateway implements PaymentGatewayInterface
 {
-    private $currency;
+    /**
+     * @var Config
+     */
+    private $config;
 
-    public function __construct($currency)
+    public function __construct(Config $config)
     {
-        $this->currency = $currency;
+        $this->config = $config;
     }
 
     public function charge($amount)
@@ -25,7 +28,7 @@ class BankPaymentGateway implements PaymentGatewayInterface
             'order_id' => rand(0, 100000),
             'bank_instructions' => 'Please send the money to our bank.',
             'amount' => $amount,
-            'currency' => $this->currency
+            'currency' => $this->config->getCurrency()
         ];
     }
 }

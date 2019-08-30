@@ -19,9 +19,15 @@
         </arguments>
     </virtualType>
 
-    <virtualType name="PronkoPaymentGatewayBankEdition" type="Pronko\Training\Model\BankPaymentGateway">
+    <virtualType name="PronkoJapaneseConfig" type="Pronko\Training\Model\Config">
         <arguments>
-            <argument name="currency" xsi:type="string">GBP</argument>
+            <argument name="currency" xsi:type="string">JPY</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="PronkoPaymentGatewayJapaneseBank" type="Pronko\Training\Model\BankPaymentGateway">
+        <arguments>
+            <argument name="config" xsi:type="object">PronkoJapaneseConfig</argument>
         </arguments>
     </virtualType>
 
@@ -29,7 +35,7 @@
         <arguments>
             <argument name="paymentPool" xsi:type="array">
                 <item name="credit_card" xsi:type="object">Pronko\Training\Model\PaymentGateway</item>
-                <item name="bank" xsi:type="object">PronkoPaymentGatewayBankEdition</item>
+                <item name="bank" xsi:type="object">PronkoPaymentGatewayJapaneseBank</item>
             </argument>
         </arguments>
     </type>
